@@ -1,0 +1,4 @@
+todolist/register/endpoint/ApplicationConfig.class
+todolist/register/persistence/Register_CRUD.class
+todolist/register/business/RegisterBusiness.class
+todolist/register/endpoint/RegisterResource.class
