@@ -1,0 +1,198 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: todolistdb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1024Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todolistdb
+spec:
+  selector:
+    app: todolistdb
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todolistdb
+spec:
+  selector:
+    matchLabels:
+      app: todolistdb
+  template:
+    metadata:
+      labels:
+        app: todolistdb
+    spec:
+      containers:
+        - name: todolistdb
+          image: spectre2346/coe692:todolistdb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: storage
+              mountPath: /data/todolistdb
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: todolistdb-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viewtask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: viewtask
+  template:
+    metadata:
+      labels:
+        app: viewtask
+    spec:
+      containers:
+        - name: viewtask
+          image: spectre2346/coe692:viewtaskservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: "jdbc:mysql://todolistdb:3306/ToDoList"
+          imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: register
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: register
+  template:
+    metadata:
+      labels:
+        app: register
+    spec:
+      containers:
+        - name: register
+          image: spectre2346/coe692:registerservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: "jdbc:mysql://todolistdb:3306/ToDoList"
+          imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: createtask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: createtask
+  template:
+    metadata:
+      labels:
+        app: createtask
+    spec:
+      containers:
+        - name: createtask
+          image: spectre2346/coe692:createtaskservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: "jdbc:mysql://todolistdb:3306/ToDoList"
+          imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: spectre2346/coe692:frontendservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: viewtaskservice
+              value: viewtask:80
+
+            - name: registerservice
+              value: register:80
+
+            - name: createtaskservice
+              value: createtask:80
+
+            - name: DB_URL
+              value: "jdbc:mysql://todolistdb:3306/ToDoList"
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: viewtask
+spec:
+  selector:
+    app: viewtask
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: register
+spec:
+  selector:
+    app: register
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: createtask
+spec:
+  selector:
+    app: createtask
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
