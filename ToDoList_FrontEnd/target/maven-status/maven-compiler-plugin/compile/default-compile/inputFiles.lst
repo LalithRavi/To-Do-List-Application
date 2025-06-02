@@ -1,0 +1,10 @@
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/persistence/DatabaseActions.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/business/Business.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/business/XMLParser.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/persistence/ValidateCredentials.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/frontend/Register.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/frontend/CreateTask.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/frontend/Authenticate.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/helper/TasksXML.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/helper/Task.java
+/home/student/NetBeansProjects/ToDoList_FrontEnd/src/main/java/todolist/frontend/Login.java

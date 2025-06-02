@@ -1,0 +1,10 @@
+todolist/frontend/Login.class
+todolist/frontend/CreateTask.class
+todolist/business/XMLParser.class
+todolist/persistence/ValidateCredentials.class
+todolist/persistence/DatabaseActions.class
+todolist/helper/Task.class
+todolist/business/Business.class
+todolist/frontend/Register.class
+todolist/frontend/Authenticate.class
+todolist/helper/TasksXML.class

@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 23, 2024, 7:19:44 PM
+    Author     : student
+*/
+
+body {
+  color: white;
+  background-image: url("resources/background1.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.wholePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.formRow {
+  margin-bottom: 10px;
+}
+
+input[type=text],
+input[type=date],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+#descriptionField {
+    width: 300px;
+    height: 100px;
+}
