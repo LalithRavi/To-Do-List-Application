@@ -1,0 +1,6 @@
+todolist/viewtasks/helper/TasksXML.class
+todolist/viewtasks/persistence/Task_CRUD.class
+todolist/viewtasks/business/ViewTasksBusiness.class
+todolist/viewtasks/endpoint/ApplicationConfig.class
+todolist/viewtasks/endpoint/ViewTasksResource.class
+todolist/viewtasks/helper/Task.class

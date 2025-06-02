@@ -1,0 +1,6 @@
+/home/student/NetBeansProjects/ToDoList_ViewTasks/src/main/java/todolist/viewtasks/persistence/Task_CRUD.java
+/home/student/NetBeansProjects/ToDoList_ViewTasks/src/main/java/todolist/viewtasks/business/ViewTasksBusiness.java
+/home/student/NetBeansProjects/ToDoList_ViewTasks/src/main/java/todolist/viewtasks/helper/Task.java
+/home/student/NetBeansProjects/ToDoList_ViewTasks/src/main/java/todolist/viewtasks/endpoint/ViewTasksResource.java
+/home/student/NetBeansProjects/ToDoList_ViewTasks/src/main/java/todolist/viewtasks/endpoint/ApplicationConfig.java
+/home/student/NetBeansProjects/ToDoList_ViewTasks/src/main/java/todolist/viewtasks/helper/TasksXML.java
